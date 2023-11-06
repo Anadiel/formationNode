@@ -23,7 +23,8 @@ const multiplyByTwo = array => array.map((value) => value * 2);
  *   - Vous ne pouvez pas utiliser de variable (autre que l'argument de la fonction)
   */
 
-const filterNameStartByA = array => array.filter((n) => n[0] === "A");
+//const filterNameStartByA = array => array.filter((n) => n[0] === "A");
+const filterNameStartByA = array => array.filter((n) => n.startsWith("A")); // Better solution
 
 /**
  * Utiliser la fonction .reduce sur le tableau passé en paramètre
@@ -56,11 +57,12 @@ const sum = array => array.reduce((r, current) => r + current, 0);
  *   - Vous ne pouvez pas utiliser de variable (autre que l'argument de la fonction)
   */
 
-const findUserById = (array, id) => ( array.find((user) => user.id === id) )
+//const findUserById = (array, id) => ( array.find((user) => user.id === id) ); //TODO Fix retourner uniquement le nom
+const findUserById = (array, id) => ( array.find((user) => user.id === id)?.name ?? null ); // Better solution 
 
 console.log(multiplyByTwo([2,3,4]));
 console.log(filterNameStartByA(['Bob', 'Alain', 'Céline', 'Alice']));
 console.log(sum([4, 5, 6, 7, 8]));
-console.log(findUserById([{id: 1, name: 'John'}, {id: 2, name: 'Doe'}, {id: 3, name: 'Foo'}], 2));
+console.log(findUserById([{id: 1, name: 'John'}, {id: 2, name: 'Doe'}, {id: 3, name: 'Foo'}], 2)); 
 
 module.exports = {multiplyByTwo, filterNameStartByA, sum, findUserById};
